@@ -1,0 +1,67 @@
+<div>
+    <h4>Consulta de contas</h4>
+    <p>Listagem de contas cadastradas no sistema.</p>
+    <hr/>
+
+
+    <app-message
+        [mensagem]="msgSucesso"
+        tipo="sucesso"
+    />
+
+
+    <app-message
+        [mensagem]="msgErro"
+        tipo="erro"
+    />
+
+
+    <div class="text-center">
+        <pagination-controls
+            previousLabel="Página Anterior"
+            nextLabel="Próxima Página"
+            (pageChange)="pageChange($event)"
+        />
+    </div>
+
+
+    <table class="table table-sm table-responsive">
+        <thead>
+            <tr>
+                <th>Nome da conta</th>
+                <th>Data</th>
+                <th>Valor</th>
+                <th>Tipo</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let conta of contas | paginate : { itemsPerPage: 4, currentPage: pagina }">
+                <td>{{ conta.nome | uppercase }}</td>
+                <td>{{ conta.data | date : 'dd/MM/yyyy' }}</td>
+                <td>{{ conta.valor | currency: 'BRL' }}</td>
+                <td>{{ conta.tipo }}</td>
+                <td>
+                    <button [routerLink]="['/app/pages/edicao-contas', conta.id]"
+                        class="btn btn-sm btn-outline-primary me-1">
+                        Editar
+                    </button>
+                    <button (click)="onDelete(conta)" class="btn btn-sm btn-outline-danger">
+                        Excluir
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="5">
+                    Quantidade de contas: {{ contas.length }}
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+
+
+</div>
+
+

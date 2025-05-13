@@ -1,0 +1,32 @@
+<div>
+    <h4>Dashboard principal</h4>
+    <p>Seja bem vindo ao sistema de controle de finanças.</p>
+    <hr/>
+
+
+    <div class="row">
+        <div class="col-md-8">
+            <div [chart]="grafico"></div>
+        </div>
+        <div class="col-md-4">
+            <table class="table table-sm">
+                <thead>
+                    <tr>
+                        <th>Tipo</th>
+                        <th>Valor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of dados">
+                        <td>{{ item.tipo | uppercase }}</td>
+                        <td>{{ item.valor | currency: 'BRL' }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+</div>
+
+

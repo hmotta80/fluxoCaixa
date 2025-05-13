@@ -1,0 +1,134 @@
+<div>
+
+
+    <h4>Edição de contas</h4>
+    <p>Utilize o formulário para alterar os dados da conta.</p>
+    <hr />
+
+
+    <app-message
+        [mensagem]="msgSucesso"
+        tipo="sucesso"
+    />
+
+
+    <app-message
+        [mensagem]="msgErro"
+        tipo="erro"
+    />
+
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+
+        <div class="row mb-3">
+            <div class="col-md-3">
+                <label>Nome da conta:</label>
+                <input type="text" class="form-control" formControlName="nome" />
+
+
+                <div class="text-danger" *ngIf="form.get('nome')?.touched">
+
+
+                    <span *ngIf="form.get('nome')?.hasError('required')">
+                        O nome da conta é obrigatório.
+                    </span>
+
+
+                    <span *ngIf="form.get('nome')?.hasError('minlength')">
+                        O nome da conta deve ter no mínimo 8 caracteres.
+                    </span>
+
+
+                    <span *ngIf="form.get('nome')?.hasError('maxlength')">
+                        O nome da conta deve ter no máximo 150 caracteres.
+                    </span>
+
+
+                </div>
+
+
+            </div>
+            <div class="col-md-3">
+                <label>Data:</label>
+                <input type="date" class="form-control" formControlName="data" />
+
+
+                <div class="text-danger" *ngIf="form.get('data')?.touched">
+
+
+                    <span *ngIf="form.get('data')?.hasError('required')">
+                        A data da conta é obrigatória.
+                    </span>
+
+
+                </div>
+
+
+            </div>
+            <div class="col-md-3">
+                <label>Valor:</label>
+                <input type="text" class="form-control" formControlName="valor" />
+
+
+                <div class="text-danger" *ngIf="form.get('valor')?.touched">
+
+
+                    <span *ngIf="form.get('valor')?.hasError('required')">
+                        O valor da conta é obrigatório.
+                    </span>
+
+
+                    <span *ngIf="form.get('valor')?.hasError('min')">
+                        O valor da conta deve ser de no mínimo 0.
+                    </span>
+
+
+                    <span *ngIf="form.get('valor')?.hasError('max')">
+                        O valor da conta deve ser de no máximo 999999.
+                    </span>
+
+
+                </div>
+
+
+            </div>
+            <div class="col-md-3">
+                <label>Tipo da conta:</label>
+                <select class="form-select" formControlName="tipo">
+                    <option value="">Escolha uma opção</option>
+                    <option value="Entrada">Entrada</option>
+                    <option value="Saída">Saída</option>
+                </select>
+
+
+                <div class="text-danger" *ngIf="form.get('tipo')?.touched">
+
+
+                    <span *ngIf="form.get('tipo')?.hasError('required')">
+                        A tipo da conta é obrigatório.
+                    </span>
+
+
+                </div>
+
+
+            </div>
+        </div>
+
+
+        <div class="row mb-3">
+            <div class="col-md-12">
+                <input type="submit" class="btn btn-primary" value="Salvar Alterações"
+                   [disabled]="form.invalid" />
+            </div>
+        </div>
+
+
+    </form>
+
+
+</div>
+
+
+

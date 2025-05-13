@@ -1,0 +1,21 @@
+<div *ngIf="mensagem != '' && tipo == 'sucesso'"
+    class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>Sucesso!</strong> {{  mensagem }}
+    <button (click)="mensagem = ''" type="button" class="btn-close" aria-label="Close"></button>
+</div>
+
+
+<div *ngIf="mensagem != '' && tipo == 'alerta'"
+    class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>Aviso!</strong> {{  mensagem }}
+    <button (click)="mensagem = ''" type="button" class="btn-close" aria-label="Close"></button>
+</div>
+
+
+<div *ngIf="mensagem != '' && tipo == 'erro'"
+    class="alert alert-danger alert-dismissible fade show" role="alert">
+    <strong>Erro!</strong> {{  mensagem }}
+    <button (click)="mensagem = ''" type="button" class="btn-close" aria-label="Close"></button>
+</div>
+
+
